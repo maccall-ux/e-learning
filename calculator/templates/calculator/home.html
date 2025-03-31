@@ -1,0 +1,45 @@
+{% extends "calculator/base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold mb-3">Power Sizing System</h1>
+        <p class="lead text-muted">Smart solutions for your energy needs</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="feature-card p-4 h-100 text-center">
+                <div class="icon-circle bg-primary text-white mx-auto mb-3">
+                    <i class="fa-solid fa-car-battery fa-2x"></i>
+                </div>
+                <h3 class="mb-3">Battery Sizing</h3>
+                <p class="text-muted">Calculate optimal battery capacity for your energy requirements</p>
+                <a href="{% url 'calculator:battery' %}" class="btn btn-outline-primary">Calculate Now</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card p-4 h-100 text-center">
+                <div class="icon-circle bg-warning text-white mx-auto mb-3">
+                    <i class="fa-solid fa-sun fa-2x"></i>
+                </div>
+                <h3 class="mb-3">Solar Sizing</h3>
+                <p class="text-muted">Determine the ideal solar panel configuration for your needs</p>
+                <a href="{% url 'calculator:solar' %}" class="btn btn-outline-warning">Calculate Now</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card p-4 h-100 text-center">
+                <div class="icon-circle bg-danger text-white mx-auto mb-3">
+                    <i class="fa-solid fa-industry fa-2x"></i>
+                </div>
+                <h3 class="mb-3">Generator Sizing</h3>
+                <p class="text-muted">Find the perfect generator size for your power backup needs</p>
+                <a href="{% url 'calculator:generator' %}" class="btn btn-outline-danger">Calculate Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block page_header %}
+   <h1>Topics</h1>
+{% endblock page_header %}
+
+{% block content %}
+
+    <ul class="list-group border-bottom pb-2 mb-4">
+    {% for topic in topics %}
+    <div class="card mb-3">
+        <!-- Card header with timestamp and edit link -->
+         <h6 class="card-header">
+          {{ topic.date_added|date:'M d, Y H:i' }}
+           <small><a href="{% url 'learning_logs:edit_topic' topic.id %}">
+            edit topic</a></small>
+        </h6>
+        <!-- Card body with entry text -->
+         <h4 class="card-body"><a href="{% url "learning_logs:topic" topic.id %}">{{ topic.text }}</a></h4>
+      </div>
+    {% empty %}
+       <h4 class='card_body'> no topics have been added yet.</h4>
+    {% endfor %}
+  <a href="{% url 'learning_logs:new_topic' %}">Add a new topic</a>
+
+{% endblock %}
