@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-lkq#de#=6bgh(^1_4hsu77=)8qqx6$7q*8!4@@f7o0gl^2nnwb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['muraya.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -50,6 +50,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+     # Your custom middleware goes here:
+    'll_project.middleware.PrivateFileAuthMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -133,3 +135,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL='learning_logs:index'
 LOGOUT_REDIRECT_URL='learning_logs:index'
 LOGIN_URL='accounts:login'
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT =BASE_DIR / 'media'

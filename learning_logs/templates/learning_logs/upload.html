@@ -1,0 +1,19 @@
+{% extends "learning_logs/base.html" %}
+
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+
+Store your favourite files here
+
+{% endblock page_header %}
+
+{% block content %}
+
+<form action="{% url "learning_logs:uploadfile" %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% bootstrap_button button_type="submit" content="Upload" %}
+</form>
+
+{% endblock content %} 

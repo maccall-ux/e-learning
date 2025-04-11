@@ -27,6 +27,15 @@
                <li class="nav-item">
                  <a class="nav-link" href="{% url 'learning_logs:topics' %}">Topics</a>
                 </li>
+                <li class="nav-item">
+                  <a href="{% url "learning_logs:uploadfile" %}" class="nav-link">Upload_File</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url "learning_logs:file_list" %}" class="nav-link">View_Files</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url "learning_logs:admin_file_list" %}" class="nav-link">Administrator</a>
+                </li>
                <li class="nav-item">
                 <a href="{% url "calculator:home" %}" class="nav-link">Power sizing</a>
                </li>

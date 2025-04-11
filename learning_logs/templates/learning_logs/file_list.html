@@ -1,0 +1,84 @@
+{% extends "learning_logs/base.html" %}
+
+{% block page_header %}
+Your favourite files
+{% endblock page_header %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="mb-4">Uploaded Files</h2>
+    
+    <div class="mb-3">
+      <a href="{% url 'learning_logs:uploadfile' %}" class="btn btn-primary">
+        <i class="bi bi-upload"></i> Upload New File
+      </a>
+    </div>
+  
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Size</th>
+                <th>Uploaded</th>
+                <th>Actions</th>
+                <th>Privacy</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for file in files %}
+              <tr>
+                <td>{{ file.name }}</td>
+                <td>
+                  <span class="badge bg-secondary">
+                    {{ file.file.name|slice:"-4:"|upper }}
+                  </span>
+                </td>
+                <td>{{ file.file.size|filesizeformat }}</td>
+                <td>{{ file.uploaded_at|date:"M d, Y H:i" }}</td>
+                <td>
+                  <div class="btn-group btn-group-sm">
+                    <a href="{% url 'learning_logs:view_file' file.pk %}" 
+                       class="btn btn-outline-primary" 
+                       target="_blank">
+                      <i class="bi bi-eye"></i> View
+                    </a>
+                    <!--<a href="{{ file.file.url }}" 
+                       class="btn btn-outline-secondary" 
+                       download>
+                      <i class="bi bi-download"></i> Download
+                    </a>-->
+                    {% if file.owner == request.user %}
+                    <a href="{% url "learning_logs:uploadfiledelete" file.id %}"
+                    class='btn btn-outline-warning'>
+                    <i class="bi bi-delete"></i> Delete
+                    </a>
+                    {% endif %}
+                  </div>
+                </td>
+                <td>
+                    {% if file.is_private %}
+                      <span class="badge bg-warning text-dark">Private</span>
+                    {% else %}
+                      <span class="badge bg-success">Public</span>
+                    {% endif %}
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="5" class="text-center text-muted py-4">
+                  No files uploaded yet.
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

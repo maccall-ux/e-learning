@@ -34,3 +34,11 @@
 }
 
 #checkbox {display: none;}
+
+
+.badge {
+  font-family: monospace;
+}
+.table {
+  font-size: 0.9rem;
+}
